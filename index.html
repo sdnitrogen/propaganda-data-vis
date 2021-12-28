@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Newpaper Propaganda Bias Visual Analysis</title>
+        <link rel="stylesheet" href="/static/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/wc.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    </head>
+    <body>
+        <div class="search-box">
+            <input
+                id="search-criteria"
+                type="text"
+                placeholder="Type to search.."
+            />
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="cancel-icon">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="search-data"></div>
+        </div>
+        <div class="loader">
+            <img src="static/img/oval.svg" />
+        </div>
+        <div class="loader_article">
+            <img src="static/img/oval.svg" />
+        </div>
+        <div class="loader_wordcloud">
+            <img src="static/img/oval.svg" />
+        </div>
+        <div class="placeholder_article">
+            <p>Click on an article node to fill data here.</p>
+        </div>
+        <div class="placeholder_wordcloud">
+            <p>Click on an article node to fill data here.</p>
+        </div>
+        <div class="wrapper">
+            <div class="date-group">
+                <input type="date" id="fromdate" />&nbsp; - &nbsp;
+                <input type="date" id="todate" />
+            </div>
+            <svg id="cluster"></svg>
+            <div id="article"></div>
+            <svg id="motionchart"></svg>
+            <svg id="streamgraph"></svg>
+            <div id="wordcloud"></div>
+        </div>
+        <script src="/static/js/main.js"></script>
+        <script src="/static/js/article_panel.js"></script>
+        <script src="/static/js/streamgraph_panel.js"></script>
+        <script src="/static/js/cluster_panel.js"></script>
+        <script src="/static/js/wordcloud_panel.js"></script>
+        <script src="/static/js/motionchart_panel.js"></script>
+        <script src="/static/js/be_api.js"></script>
+    </body>
+</html>

@@ -1,0 +1,409 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+html,
+body {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    background: #1f1a24;
+    color: white;
+}
+::selection {
+    color: #fff;
+    background: #ff0266;
+}
+.search-box {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 99;
+}
+.search-box.active {
+    width: 25%;
+}
+
+.search-box.searched-mode {
+    animation: searchMoveAnimation 0.5s both ease-in;
+}
+
+@keyframes searchMoveAnimation {
+    0% {
+        top: 45%;
+        left: 37%;
+    }
+    100% {
+        top: 2.5%;
+        left: 2.5%;
+    }
+}
+
+.search-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    outline: none;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.search-box input.active {
+    opacity: 1;
+}
+.search-box input::placeholder {
+    color: #a6a6a6;
+}
+.search-box .search-icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 60px;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 22px;
+    color: #ff0266;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.search-box .search-icon.active {
+    right: 5px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    font-size: 20px;
+    background: #ff0266;
+    color: #fff;
+    transform: translateY(-50%) rotate(360deg);
+}
+.search-box .cancel-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.search-box .cancel-icon.active {
+    right: -40px;
+    transform: translateY(-50%) rotate(360deg);
+}
+.search-box .search-data {
+    text-align: center;
+    padding-top: 7px;
+    color: #fff;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+.search-box .search-data.active {
+    display: none;
+}
+
+.wrapper {
+    opacity: 0;
+}
+
+.loader {
+    position: absolute;
+    top: 47.5%;
+    left: 67%;
+    opacity: 0;
+}
+
+.loader_article {
+    position: absolute;
+    top: 37%;
+    left: 84%;
+    opacity: 0;
+}
+
+.loader_wordcloud {
+    position: absolute;
+    top: 80%;
+    left: 84%;
+    opacity: 0;
+}
+
+.placeholder_article {
+    position: absolute;
+    top: 37%;
+    left: 75%;
+    opacity: 0;
+}
+
+.placeholder_wordcloud {
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    opacity: 0;
+}
+
+.wrapper.active {
+    animation: fadein 1s linear 1 normal forwards;
+}
+
+.date-group {
+    display: inline-block;
+    position: absolute;
+    top: 4%;
+    left: 40%;
+}
+
+.date-group input {
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    outline: none;
+    padding: 5px 10px 5px 20px;
+    font-size: 18px;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+svg {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#article {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    top: 15.6%;
+    left: 71.5%;
+    height: 50%;
+    width: 28%;
+    overflow-y: auto;
+    font-size: small;
+    fill: white;
+    padding: 5px;
+}
+
+.article-title {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#cluster {
+    position: absolute;
+    top: 15%;
+    left: 0px;
+    height: 85%;
+    width: 70%;
+}
+
+#motionchart {
+    position: absolute;
+    top: 102%;
+    left: 71.2%;
+    height: 45%;
+    width: 28%;
+}
+
+#streamgraph {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    top: 102%;
+    left: 0px;
+    height: 45%;
+    width: 70%;
+}
+
+#wordcloud {
+    position: absolute;
+    top: 66%;
+    left: 71.2%;
+    height: 33.7%;
+    width: 28%;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#streamgraph path:hover {
+    fill-opacity: 1;
+}
+#streamgraph path {
+    opacity: 1;
+    fill-opacity: 0.8;
+}
+
+#cluster circle:hover {
+    fill-opacity: 1;
+}
+#cluster circle {
+    opacity: 1;
+    fill-opacity: 0.8;
+}
+
+span {
+    border-radius: 5px;
+}
+
+.PERSON {
+    background-color: yellow;
+    color: black;
+}
+
+.NORP {
+    background-color: yellow;
+    color: black;
+}
+
+.GPE {
+    background-color: greenyellow;
+    color: black;
+}
+
+.CARDINAL {
+    background-color: green;
+    color: black;
+}
+
+.ORDINAL {
+    background-color: green;
+    color: black;
+}
+
+.MONEY {
+    background-color: rgb(59, 86, 238);
+    color: black;
+}
+
+.DATE {
+    background-color: orange;
+    color: black;
+}
+
+.TIME {
+    background-color: orange;
+    color: black;
+}
+
+.ORG {
+    background-color: olivedrab;
+    color: black;
+}
+
+.LAW {
+    background-color: rgb(148, 224, 208);
+    color: black;
+}
+
+.WORK_OF_ART {
+    background-color: rgb(148, 224, 208);
+    color: black;
+}
+
+.EVENT {
+    background-color: rgb(133, 83, 130);
+    color: black;
+}
+
+.LOC {
+    background-color: rgb(133, 83, 130);
+    color: black;
+}
+
+.tooltip {
+    position: absolute;
+    width: 300px;
+    padding: 5px;
+    background: black;
+    border: 1px solid;
+    border-radius: 3px;
+    pointer-events: none;
+    text-align: center;
+}
+
+.tooltip svg {
+    border: none;
+}
+
+
+text {
+    font: 10px sans-serif;
+  }
+  
+  .dot {
+    stroke: #000;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
+  }
+  
+  .label {
+    fill: white;
+  }
+  
+  .country {
+    font: 400 48px"Helvetica Neue";
+    text-anchor: center;
+    fill: white;
+  }
+  
+  .year.label {
+    font: 40 20px"Helvetica Neue";
+    fill: rgba(255, 255, 255, 0.452);
+  }
+  
+  .year.label.active {
+    fill: rgba(255, 255, 255, 0.452);
+  }
+  
+  .hidden {
+    color: #f00;
+  }
+  
+  .visible {
+    color: #0f0;
+  }
+  
+  .overlay {
+    fill: none;
+    pointer-events: all;
+    cursor: ns-resize;
+  }
+  
+  .d3-tip {
+    line-height: 1;
+    font-family: Lucida Grande, Lucida Sans Unicode, Arial, Helvetica;
+    font-size: 12px;
+    padding: 12px;
+    background: #EFEFEF;
+    color: #253756;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+  }
