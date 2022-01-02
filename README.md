@@ -44,3 +44,8 @@ python3 -m http.server [PORT NUMBER]
 <img src="design_mockup.png" align="center"><br><br>
 <img src="search_ui.gif" align="center"><br><br>
 <img src="project_ui.png" align="center">
+
+### Support Development
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sdnitrogen) <br> 
+[![Donate](https://img.shields.io/badge/Donate-Paypal-blue?style=for-the-badge)](https://www.paypal.me/sdnitrogen)
